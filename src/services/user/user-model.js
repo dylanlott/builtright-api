@@ -1,7 +1,7 @@
 'use strict';
 
 // user-model.js - A mongoose model
-// 
+//
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 
@@ -20,6 +20,7 @@ const userSchema = new Schema({
   access: { type: Number, default: 1000 },
   bio: { type: String },
   following: [{ type: Schema.Types.ObjectId, ref: 'user'}],
+  displayName: { type: String, unique: true, required: false },
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });
