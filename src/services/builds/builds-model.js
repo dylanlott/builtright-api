@@ -13,7 +13,7 @@ const buildsSchema = new Schema({
   description: { type: String },
   parts: [{type: Schema.Types.ObjectId, ref: 'parts'}],
   comments: [{type: Schema.Types.ObjectId, ref: 'comments'}],
-  owner: { type: Schema.Types.ObjectId, ref: 'user' },
+  owner: { type: String },
   hidden: { type: Boolean },
   flagged: { type: Boolean },
   published: { type: Boolean },

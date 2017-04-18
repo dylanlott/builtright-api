@@ -7,7 +7,7 @@ plan.target('dev', {
 	host: '159.203.106.53',
   username: 'root',
   agent: process.env.SSH_AUTH_SOCK,
-	webRoot: '/var/www/dev.builtrightapp.com/feathers',
+	webRoot: '/var/www/dev.builtrightapp.com/server',
   ownerUser: 'root',
   repository: 'https://github.com/dylanlott/builtright-feathers.git',
   branchName: 'master',
@@ -18,7 +18,7 @@ plan.target('prod', {
   host: '159.203.106.53',
   username: 'root',
   agent: process.env.SSH_AUTH_SOCK,
-  webRoot: '/var/www/builtrightapp.com/feathers',
+  webRoot: '/var/www/builtrightapp.com/server',
   repository: 'https://github.com/dylanlott/builtright-feathers.git',
   branchName: 'master'
 });
