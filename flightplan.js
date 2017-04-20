@@ -9,7 +9,7 @@ plan.target('dev', {
   agent: process.env.SSH_AUTH_SOCK,
 	webRoot: '/var/www/dev.builtrightapp.com/server',
   ownerUser: 'root',
-  repository: 'https://github.com/dylanlott/builtright-feathers.git',
+  repository: 'https://github.com/dylanlott/builtright-api.git',
   branchName: 'master',
   maxDeploys: 10
 });
@@ -19,7 +19,7 @@ plan.target('prod', {
   username: 'root',
   agent: process.env.SSH_AUTH_SOCK,
   webRoot: '/var/www/builtrightapp.com/server',
-  repository: 'https://github.com/dylanlott/builtright-feathers.git',
+  repository: 'https://github.com/dylanlott/builtright-api.git',
   branchName: 'master'
 });
 
@@ -33,6 +33,17 @@ plan.remote('setup', function(remote) {
   })
 })
 
+//Git based deploy
+plan.local('deploy', function(local) {
+  local.hostname();
+  local.failsafe();
+  local.exec('git add . && git commit -am "flightplan push"');
+  local.log('Committed to GitHub');
+  local.exec('git push origin master');
+  local.log('Pushed to GitHub');
+  local.unsafe();
+});
+
 plan.remote('deploy', function(remote) {
   remote.hostname();
   remote.with('cd ' + remote.runtime.webRoot, function() {
@@ -45,12 +56,21 @@ plan.remote('deploy', function(remote) {
   });
 });
 
-plan.local('deploy', function(local) {
+//Docker based deploy
+plan.local('docker', function(local) {
   local.hostname();
-  local.failsafe();
-  local.exec('git add . && git commit -am "flightplan push"');
-  local.log('Committed to GitHub');
-  local.exec('git push origin master');
-  local.log('Pushed to GitHub');
-  local.unsafe();
+  local.exec('docker build -t hivemindapps/builtright-api .');
+  local.exec('docker push hivemindapps/builtright-api');
+  local.log('Docker image built successfully and pushed to Docker Hub');
+});
+
+plan.remote('docker', function(remote) {
+  remote.hostname();
+  remote.exec('docker pull hivemindapps/builtright-api:latest');
+  remote.failsafe();
+  remote.exec('docker stop builtright-api');
+  remote.unsafe();
+  remote.exec('docker run --name builtright-api -d -p 3030:3030 --link mongo:mongo hivemindapps/builtright-api:latest');
+  remote.exec('docker ps');
+  remote.exec('docker logs builtright-api');
 });
