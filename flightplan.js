@@ -48,10 +48,11 @@ plan.remote('deploy', function(remote) {
   remote.hostname();
   remote.with('cd ' + remote.runtime.webRoot, function() {
     remote.sudo('git pull origin master');
-    remote.failsafe();
     remote.sudo('npm install');
+    remote.failsafe();
+    remote.exec('pm2 restart src/index.js');
     remote.unsafe();
-    remote.exec('pm2 start src/index.js');
+    remote.exec('pm2 list');
     remote.log('Deploy successful');
   });
 });
