@@ -23,9 +23,6 @@ app.use(compress())
   .options('*', cors())
   .use(cors())
   .use(favicon( path.join(app.get('public'), 'favicon.ico') ))
-  .use('/', function(req, res) {
-    res.status(200).send('OK');
-  })
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: true }))
   .configure(hooks())

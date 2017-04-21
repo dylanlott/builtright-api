@@ -6,6 +6,7 @@ const parts = require('./parts');
 const builds = require('./builds');
 const authentication = require('./authentication');
 const user = require('./user');
+const health = require('./health');
 const mongoose = require('mongoose');
 module.exports = function() {
   const app = this;
@@ -20,4 +21,5 @@ module.exports = function() {
   app.configure(parts);
   app.configure(posts);
   app.configure(events);
+  app.configure(health);
 };
