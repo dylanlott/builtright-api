@@ -1,4 +1,5 @@
 'use strict';
+const analytics = require('./analytics');
 const events = require('./events');
 const posts = require('./posts');
 const comments = require('./comments');
@@ -22,4 +23,5 @@ module.exports = function() {
   app.configure(posts);
   app.configure(events);
   app.configure(health);
+  app.configure(analytics);
 };
