@@ -13,6 +13,8 @@ const partsSchema = new Schema({
   make: { type: String },
   model: { type: String },
   trim: { type: String },
+  description: { type: String },
+  specs: { type: Schema.Types.Mixed },
   price: { type: Number },
   url: { type: String },
   comments: [{type: Schema.Types.ObjectId, ref: 'comments'}],
