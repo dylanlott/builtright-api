@@ -11,5 +11,5 @@ module.exports = function() {
 
   app.use('/', function(req, res) {
     res.status(200).json(api);
-  })
+  });
 }
