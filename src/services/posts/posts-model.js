@@ -11,11 +11,11 @@ const Schema = mongoose.Schema;
 const postsSchema = new Schema({
   title: { type: String, required: true },
   text: { type: String, required: true },
-  type: { type: String, enum: ['forum', 'blog'], required: true },
+  type: { type: String, enum: ['forum', 'blog'], required: true, default: 'blog' },
   date: { type: Date, required: true },
   published: { type: Boolean, default: false, required: true},
   comments: [{ type: Schema.Types.ObjectId }],
-  user: { type: Schema.Types.ObjectId, ref: 'user', required: true},
+  user: { type: String, required: true},
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });

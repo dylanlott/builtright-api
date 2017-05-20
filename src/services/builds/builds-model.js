@@ -9,7 +9,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const buildsSchema = new Schema({
-  title: { type: String, required: true },
+  name: { type: String, required: true },
+  make: { type: String, required: true },
+  model: { type: String, required: true},
+  year: { type: Number, required: true },
+  trim: { type: String },
   description: { type: String },
   parts: [{type: Schema.Types.ObjectId, ref: 'parts'}],
   comments: [{type: Schema.Types.ObjectId, ref: 'comments'}],
