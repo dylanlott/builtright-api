@@ -17,7 +17,7 @@ const buildsSchema = new Schema({
   description: { type: String },
   parts: [{type: Schema.Types.ObjectId, ref: 'parts'}],
   comments: [{type: Schema.Types.ObjectId, ref: 'comments'}],
-  owner: { type: String },
+  user: { type: String, required: true },
   hidden: { type: Boolean },
   flagged: { type: Boolean },
   published: { type: Boolean },

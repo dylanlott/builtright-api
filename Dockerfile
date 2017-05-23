@@ -1,12 +1,7 @@
 FROM node:alpine
-
 WORKDIR /feathers
-
 COPY ./ /feathers
-
-RUN npm install -g pm2 && \
-npm install
-
+ENV NODE_ENV production 
+RUN npm install --production
 EXPOSE 3030
-
-CMD ["pm2", "start", "src/index.js"]
+CMD ["node", "src/index.js"]

@@ -1,11 +1,11 @@
 {
   "host": "builtright-app.feathersjs.com",
-  "port": 80,
-  "mongodb": "DATABASE_URL",
+  "port": 3030,
+  "mongodb": "mongodb://mongo:27017/builtright_production",
   "public": "../public/",
   "auth": {
     "token": {
-      "secret": "FEATHERS_AUTH_SECRET"
+      "secret": "stamina435"
     },
     "local": {},
     "facebook": {

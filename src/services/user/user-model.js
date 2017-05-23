@@ -20,7 +20,7 @@ const userSchema = new Schema({
   access: { type: Number, default: 1000 },
   bio: { type: String },
   following: [{ type: Schema.Types.ObjectId, ref: 'user'}],
-  displayName: { type: String, unique: true, required: false },
+  displayName: { type: String, unique: true },
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });

@@ -18,7 +18,7 @@ const partsSchema = new Schema({
   price: { type: Number },
   url: { type: String },
   comments: [{type: Schema.Types.ObjectId, ref: 'comments'}],
-  owner: { type: Schema.Types.ObjectId, ref: 'user' },
+  user: { type: String, ref: 'user' },
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });
