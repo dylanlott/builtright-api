@@ -18,6 +18,7 @@ const userSchema = new Schema({
   email: {type: String, required: true, unique: true},
   password: { type: String, required: true },
   access: { type: Number, default: 1000 },
+  permissions: [{ type: String }],
   bio: { type: String },
   following: [{ type: Schema.Types.ObjectId, ref: 'user'}],
   displayName: { type: String, unique: true },

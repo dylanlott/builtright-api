@@ -11,6 +11,8 @@ const Schema = mongoose.Schema;
 const analyticsSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'user' },
   action: { type: String },
+  intent: { type: String },
+  event: { type: String },
   data: { type: Schema.Types.Mixed },
   name: { type: String, required: true },
   createdAt: { type: Date, 'default': Date.now },

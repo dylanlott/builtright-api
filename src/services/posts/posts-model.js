@@ -11,7 +11,7 @@ const Schema = mongoose.Schema;
 const postsSchema = new Schema({
   title: { type: String, required: true },
   text: { type: String, required: true },
-  type: { type: String, enum: ['forum', 'blog'], required: true, default: 'blog' },
+  type: { type: String, enum: ['forum', 'blog'], required: true, default: 'forum' },
   date: { type: Date, required: true },
   published: { type: Boolean, default: false, required: true},
   comments: [{ type: Schema.Types.ObjectId }],

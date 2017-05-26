@@ -1,4 +1,5 @@
 'use strict';
+const blogs = require('./blogs');
 const analytics = require('./analytics');
 const events = require('./events');
 const posts = require('./posts');
@@ -9,6 +10,7 @@ const authentication = require('./authentication');
 const user = require('./user');
 const health = require('./health');
 const mongoose = require('mongoose');
+
 module.exports = function() {
   const app = this;
 
