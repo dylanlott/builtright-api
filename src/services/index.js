@@ -1,4 +1,5 @@
 'use strict';
+const votes = require('./votes');
 const blogs = require('./blogs');
 const analytics = require('./analytics');
 const events = require('./events');
@@ -26,4 +27,6 @@ module.exports = function() {
   app.configure(events);
   app.configure(health);
   app.configure(analytics);
+  app.configure(blogs);
+  app.configure(votes);
 };

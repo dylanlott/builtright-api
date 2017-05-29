@@ -10,15 +10,15 @@ const Schema = mongoose.Schema;
 
 const partsSchema = new Schema({
   name: { type: String, required: true },
-  make: { type: String },
-  model: { type: String },
+  make: { type: String, required: true },
+  model: { type: String, required: true },
   trim: { type: String },
   description: { type: String },
   specs: { type: Schema.Types.Mixed },
-  price: { type: Number },
-  url: { type: String },
-  comments: [{type: Schema.Types.ObjectId, ref: 'comments'}],
-  user: { type: String, ref: 'user' },
+  price: { type: Number, required: true },
+  url: { type: String, required: true },
+  source: { type: String }, // site part was scraped from
+  user: { type: String, ref: 'user', required: true },
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });
