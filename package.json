@@ -1,7 +1,7 @@
 {
   "name": "builtright",
   "description": "server for the builtright platform",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "",
   "main": "src/",
   "keywords": [
