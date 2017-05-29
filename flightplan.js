@@ -79,4 +79,5 @@ plan.remote('docker', function(remote) {
 plan.remote('check', function(remote) {
   remote.exec('pm2 list');
   remote.exec('pm2 show builtright');
+  remote.exec('pm2 logs builtright');
 });

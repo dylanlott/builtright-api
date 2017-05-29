@@ -12,11 +12,11 @@ const Schema = mongoose.Schema;
 
 const commentsSchema = new Schema({
   text: { type: String, required: true },
-  user: { type: String, ref: 'user' }, // user email for ease of querying
+  user: { type: String, ref: 'user', required: true }, // user email for ease of querying
   displayName: { type: String }, // if user has a displayName
   flagged: { type: Boolean },
   hidden: { type: Boolean },
-  source: { type: String }, // can be _id of post, blog, part, build, etc...
+  source: { type: String, required: true }, // can be _id of post, blog, part, build, etc...
   votes: [{ type: Schema.Types.ObjectId, ref: 'votes' }],
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }

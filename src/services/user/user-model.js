@@ -21,6 +21,7 @@ const userSchema = new Schema({
   permissions: [{ type: String }],
   bio: { type: String },
   following: [{ type: Schema.Types.ObjectId, ref: 'user'}],
+  savedPosts: [{ type: Schema.Types.ObjectId, ref: 'posts' }],
   displayName: { type: String, unique: true },
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }

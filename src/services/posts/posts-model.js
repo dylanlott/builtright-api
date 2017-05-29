@@ -13,6 +13,8 @@ const postsSchema = new Schema({
   text: { type: String, required: true },
   type: { type: String, enum: ['forum', 'blog'], required: true, default: 'forum' },
   date: { type: Date, required: true },
+  flagged: { type: Boolean, default: false },
+  reports: [{ type: Schema.Types.Mixed }],
   published: { type: Boolean, default: false, required: true},
   comments: [{ type: Schema.Types.ObjectId }],
   user: { type: String, required: true},
