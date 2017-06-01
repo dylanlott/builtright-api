@@ -16,7 +16,7 @@ const postsSchema = new Schema({
   flagged: { type: Boolean, default: false },
   reports: [{ type: Schema.Types.Mixed }],
   published: { type: Boolean, default: false, required: true},
-  comments: [{ type: Schema.Types.ObjectId }],
+  _comments: [{ type: Schema.Types.ObjectId }],
   user: { type: String, required: true},
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }

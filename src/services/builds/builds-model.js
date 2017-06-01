@@ -4,7 +4,7 @@
 //
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
-
+const populate = require('feathers-hooks-common').populate;
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -16,7 +16,7 @@ const buildsSchema = new Schema({
   trim: { type: String },
   description: { type: String },
   user: { type: String, required: true },
-  parts: [{ type: Schema.Types.ObjectId, ref: 'parts' }],
+  _parts: [{ type: String }],
   hidden: { type: Boolean },
   flagged: { type: Boolean },
   published: { type: Boolean },

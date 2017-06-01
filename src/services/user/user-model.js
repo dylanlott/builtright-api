@@ -20,7 +20,7 @@ const userSchema = new Schema({
   access: { type: Number, default: 1000 },
   permissions: [{ type: String }],
   bio: { type: String },
-  following: [{ type: Schema.Types.ObjectId, ref: 'user'}],
+  _following: [{ type: Schema.Types.ObjectId, ref: 'user'}],
   savedPosts: [{ type: Schema.Types.ObjectId, ref: 'posts' }],
   displayName: { type: String, unique: true },
   createdAt: { type: Date, 'default': Date.now },

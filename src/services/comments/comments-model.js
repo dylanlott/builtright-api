@@ -16,8 +16,8 @@ const commentsSchema = new Schema({
   displayName: { type: String }, // if user has a displayName
   flagged: { type: Boolean },
   hidden: { type: Boolean },
-  source: { type: String, required: true }, // can be _id of post, blog, part, build, etc...
-  votes: [{ type: Schema.Types.ObjectId, ref: 'votes' }],
+  _source: { type: String, required: true }, // can be _id of post, blog, part, build, etc...
+  _votes: [{ type: Schema.Types.ObjectId, ref: 'votes' }],
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }
 });
