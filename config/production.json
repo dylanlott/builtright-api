@@ -1,5 +1,5 @@
 {
-  "host": "builtright-app.feathersjs.com",
+  "host": "builtrightapp.com",
   "port": 3030,
   "mongodb": "mongodb://mongo:27017/builtright_production",
   "public": "../public/",

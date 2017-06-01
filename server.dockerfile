@@ -1,6 +1,6 @@
 FROM node:alpine
-WORKDIR /feathers
-COPY ./ /feathers
+WORKDIR /builtright
+COPY ./ /builtright
 ENV NODE_ENV production 
 RUN npm install --production
 EXPOSE 3030
