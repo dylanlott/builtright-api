@@ -1,7 +1,7 @@
 {
   "host": "builtrightapp.com",
   "port": 3030,
-  "mongodb": "mongodb://mongo:27017/builtright_production",
+  "mongodb": "mongodb://dylanlott:password123@mongo:27017/builtright_production",
   "public": "../public/",
   "auth": {
     "token": {
