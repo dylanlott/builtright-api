@@ -3,7 +3,7 @@
 
 var plan = require('flightplan');
 var appName = 'builtright-server';
-var username = 'dylan';
+var username = 'root';
 
 plan.target('prod', {
     host: '165.227.67.146',
