@@ -38,13 +38,13 @@ plan.local('deploy', function(local) {
 plan.remote('deploy', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
-        remote.sudo('git pull origin master');
-        remote.sudo('npm install');
-        remote.failsafe();
-        remote.exec('pm2 restart index.js');
-        remote.unsafe();
-        remote.exec('pm2 list');
-        remote.log('Deploy successful');
+        // remote.sudo('git pull origin master');
+        // remote.sudo('npm install');
+        // remote.failsafe();
+        // remote.exec('pm2 restart index.js');
+        // remote.unsafe();
+        // remote.exec('pm2 list');
+        // remote.log('Deploy successful');
     });
 });
 
