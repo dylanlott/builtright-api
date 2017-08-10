@@ -20,8 +20,8 @@ plan.remote('setup', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
         remote.sudo('git clone ' + remote.runtime.repository);
-        remote.sudo('npm install');
-        remote.sudo('pm2 start index.js');
+        remote.exec('npm install');
+        remote.exec('pm2 start index.js');
     })
 });
 
@@ -39,12 +39,12 @@ plan.remote('deploy', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
         remote.exec('git pull origin master');
-        // remote.sudo('npm install');
-        // remote.failsafe();
-        // remote.exec('pm2 restart index.js');
-        // remote.unsafe();
-        // remote.exec('pm2 list');
-        // remote.log('Deploy successful');
+        remote.exec('npm install');
+        remote.failsafe();
+        remote.exec('pm2 restart index.js');
+        remote.unsafe();
+        remote.exec('pm2 list');
+        remote.log('Deploy successful');
     });
 });
 
