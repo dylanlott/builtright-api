@@ -41,7 +41,7 @@ plan.remote('deploy', function(remote) {
         remote.exec('sudo git pull origin master');
         remote.exec('sudo npm install');
         remote.failsafe();
-        remote.exec('sudo pm2 restart index.js');
+        remote.exec('sudo pm2 start index.js');
         remote.unsafe();
         remote.exec('sudo pm2 list');
         remote.log('Deploy successful');
