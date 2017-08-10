@@ -1,56 +1,46 @@
 {
-  "name": "builtright",
-  "description": "server for the builtright platform",
-  "version": "0.0.1",
-  "homepage": "",
-  "main": "src/",
-  "keywords": [
-    "feathers"
-  ],
-  "license": "MIT",
-  "repository": {},
-  "author": {},
-  "contributors": [],
-  "bugs": {},
-  "engines": {
-    "node": ">= 0.12.0"
-  },
+  "name": "mern-starter-server",
+  "version": "1.0.0",
+  "description": "API server for MERN Starter, powered by Express.",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/",
-    "test": "npm run jshint && npm run mocha",
-    "jshint": "jshint src/. test/. --config",
-    "start": "node src/",
-    "mocha": "mocha test/ --recursive"
+    "test": "mocha -S --ui bdd --require ./tests/spec_helper.js --recursive ./tests --reporter spec",
+    "dev": "nodemon index.js"
   },
+  "keywords": [
+    "mern",
+    "api",
+    "server-side"
+  ],
+  "author": "Joshua Slate",
+  "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "compression": "^1.6.2",
-    "cors": "^2.8.3",
-    "feathers": "^2.1.1",
-    "feathers-authentication": "^0.7.12",
-    "feathers-configuration": "^0.3.3",
-    "feathers-errors": "^2.6.3",
-    "feathers-hooks": "^1.8.1",
-    "feathers-hooks-common": "^3.5.0",
-    "feathers-mongoose": "^3.6.2",
-    "feathers-rest": "^1.7.2",
-    "feathers-socketio": "^1.5.2",
-    "generator-feathers": "^1.0.3",
-    "mongoose": "^4.9.4",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mailchimp-v3": "^1.0.1",
+    "mailgun-js": "^0.7.10",
+    "moment": "^2.13.0",
+    "mongoose": "^4.4.13",
+    "morgan": "^1.7.0",
     "passport": "^0.3.2",
-    "passport-facebook": "^2.1.1",
-    "passport-facebook-token": "^3.3.0",
-    "passport-google-oauth20": "^1.0.0",
-    "passport-google-token": "^0.1.2",
-    "passport-instagram": "^1.0.0",
-    "passport-instagram-token": "^2.3.0",
-    "serve-favicon": "^2.4.2",
-    "winston": "^2.3.1"
+    "passport-jwt": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "sendgrid": "^4.7.1",
+    "socket.io": "^1.4.6",
+    "stripe": "^4.6.0"
   },
   "devDependencies": {
-    "flightplan": "^0.6.17",
-    "jshint": "^2.9.4",
+    "babel-eslint": "^7.1.0",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
     "mocha": "^3.2.0",
-    "request": "^2.81.0"
+    "should": "^11.1.1",
+    "supertest": "^2.0.0",
+    "nodemon": "^1.11.0"
   }
 }
