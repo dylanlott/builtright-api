@@ -19,18 +19,18 @@ plan.target('prod', {
 plan.remote('setup', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
-        remote.sudo('git clone ' + remote.runtime.repository);
-        remote.sudo('npm install');
-        remote.sudo('pm2 start index.js');
+        remote.sudo('sudo git clone ' + remote.runtime.repository);
+        remote.sudo('sudo npm install');
+        remote.sudo('sudo pm2 start index.js');
     })
 });
 
 plan.local('deploy', function(local) {
     local.hostname();
     local.failsafe();
-    local.exec('git add . && git commit -am "flightplan push"');
+    local.exec('sudo git add . && git commit -am "flightplan push"');
     local.log('Committed to GitHub');
-    local.exec('git push origin master');
+    local.exec('sudo git push origin master');
     local.log('Pushed to GitHub');
     local.unsafe();
 });
@@ -38,12 +38,12 @@ plan.local('deploy', function(local) {
 plan.remote('deploy', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
-        remote.sudo('git pull origin master');
-        remote.sudo('npm install');
+        remote.exec('sudo git pull origin master');
+        remote.exec('sudo npm install');
         remote.failsafe();
-        remote.exec('pm2 restart index.js');
+        remote.exec('sudo pm2 restart index.js');
         remote.unsafe();
-        remote.exec('pm2 list');
+        remote.exec('sudo pm2 list');
         remote.log('Deploy successful');
     });
 });
