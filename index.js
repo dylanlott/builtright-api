@@ -12,6 +12,8 @@ const os = require('os');
 
 let server;
 
+mongoose.Promise = require('bluebird');
+
 if(cluster.isMaster) {
   var numWorkers = require('os').cpus().length;
 
@@ -39,7 +41,9 @@ if(cluster.isMaster) {
   }
 }
 
-mongoose.connect(config.database);
+mongoose.connect(config.database, {
+  useMongoClient: true
+});
 
 const io = require('socket.io').listen(server);
 
