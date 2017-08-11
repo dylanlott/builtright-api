@@ -61,7 +61,7 @@ module.exports = function(app) {
         res.send({ content: 'The protected test route is functional!' });
     });
 
-    apiRoutes.get('/admins-only', requireAuth, AuthenticationController.roleAuthorization(ROLE_ADMIN), (req, res) => {
+    apiRoutes.get('/admins', requireAuth, AuthenticationController.roleAuthorization(ROLE_ADMIN), (req, res) => {
         res.send({ content: 'Admin dashboard is working.' });
     });
 
@@ -115,6 +115,9 @@ module.exports = function(app) {
     // Send email from contact form
     communicationRoutes.post('/contact', CommunicationController.sendContactForm);
 
+    app.use('/health', function(req, res, next) {
+        res.send('OK');
+    });
     // Set url for API group routes
     app.use('/api', apiRoutes);
 };

@@ -38,16 +38,16 @@ plan.local('deploy', function(local) {
 plan.remote('deploy', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
-        remote.exec('sudo git pull origin master');
-        remote.exec('sudo npm install');
+        remote.exec('git pull origin master');
+        remote.exec('npm install');
         remote.failsafe();
-        remote.exec('sudo pm2 start index.js');
+        remote.exec('pm2 restart index.js');
         remote.unsafe();
-        remote.exec('sudo pm2 list');
+        remote.exec('pm2 list');
         remote.log('Deploy successful');
     });
 });
 
 plan.remote('check', function(remote) {
-    remote.exec('pm2 list');
+    remote.exec('sudo pm2 list');
 });
