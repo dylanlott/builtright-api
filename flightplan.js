@@ -1,5 +1,5 @@
 // app root is /var/www/builtrightapp.com/server
-// user is `dylan` 
+// user is `dylan`
 
 var plan = require('flightplan');
 var appName = 'builtright-server';
@@ -38,12 +38,12 @@ plan.local('deploy', function(local) {
 plan.remote('deploy', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
-        remote.exec('git pull origin master');
-        remote.exec('npm install');
+        remote.exec('sudo git pull origin master');
+        remote.exec('sudo npm install');
         remote.failsafe();
-        remote.exec('pm2 restart index.js');
+        remote.exec('sudo pm2 restart index.js');
         remote.unsafe();
-        remote.exec('pm2 list');
+        remote.exec('sudo pm2 list');
         remote.log('Deploy successful');
     });
 });
