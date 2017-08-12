@@ -41,6 +41,7 @@ if(cluster.isMaster) {
   }
 }
 
+console.log(`Connecting to mongo ${config.database}`);
 mongoose.connect(config.database, {
   useMongoClient: true
 });

@@ -32,3 +32,5 @@ node_modules
 
 lib/
 data/
+
+package-lock.json
