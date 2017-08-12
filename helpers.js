@@ -1,7 +1,8 @@
-const ROLE_MEMBER = require('./constants').ROLE_MEMBER;
-const ROLE_CLIENT = require('./constants').ROLE_CLIENT;
-const ROLE_OWNER = require('./constants').ROLE_OWNER;
-const ROLE_ADMIN = require('./constants').ROLE_ADMIN;
+const constants = require('./constants');
+const ROLE_MEMBER = constants.ROLE_MEMBER;
+const ROLE_CLIENT = constants.ROLE_CLIENT;
+const ROLE_OWNER = constants.ROLE_OWNER;
+const ROLE_ADMIN = constants.ROLE_ADMIN;
 
 // Set user info from request
 exports.setUserInfo = function setUserInfo(request) {

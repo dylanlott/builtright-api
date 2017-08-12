@@ -1,6 +1,9 @@
 # swap files
 *.swp
 
+# config / secrets 
+config/secrets.js
+
 # Logs
 logs
 *.log
