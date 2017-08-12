@@ -3,7 +3,7 @@ const mailchimp = require('mailchimp-v3');
 
 mailchimp.setApiKey(config.mailchimpApiKey);
 
-const listID = '';
+const listID = '4fdfcea118';
 
 // ========================
 // Subscribe to main list

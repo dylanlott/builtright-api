@@ -9,6 +9,7 @@ const socketEvents = require('./socketEvents');
 const config = require('./config/main');
 const cluster = require('cluster');
 const os = require('os');
+const path = require('path');
 
 let server;
 
@@ -50,13 +51,10 @@ const io = require('socket.io').listen(server);
 
 socketEvents(io);
 
-// Set static file location for production
-// app.use(express.static(__dirname + '/public'));
-
-// Setting up basic middleware for all Express requests
 app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
 app.use(bodyParser.json()); // Send JSON responses
 app.use(logger('dev')); // Log requests to API using morgan
+// app.use(express.static(path.join(__dirname, '..', '/client')));
 
 // Enable CORS from client-side
 app.use((req, res, next) => {

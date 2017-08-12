@@ -1,24 +1,15 @@
 module.exports = {
-  // Secret key for JWT signing and encryption
   secret: 'super secret passphrase',
-  // Database connection information
   database: process.env.NODE_ENV === 'production' 
     ? `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@localhost:27017/builtright`
     : `mongodb://localhost:27017/builtright`,
-  // Setting port for server
   port: 3000,
-  // Configuring Mailgun API for sending transactional email
-  mailgun_priv_key: 'mailgun private key here',
-  // Configuring Mailgun domain for sending transactional email
-  mailgun_domain: 'mailgun domain here',
-  // Mailchimp API key
-  mailchimpApiKey: 'mailchimp api key here',
-  // SendGrid API key
+  mailgun_priv_key: process.env.MAILGUN_PRIV_KEY,
+  mailgun_domain: process.env.MAILGUN_DOMAIN,
+  mailchimpApiKey: process.env.MAILCHIMP_API_KEY,
   sendgridApiKey: 'sendgrid api key here',
-  // Stripe API key
   stripeApiKey: 'stripe api key goes here',
-  // necessary in order to run tests in parallel of the main app
   test_port: 3001,
   test_db: 'mern-starter-test',
   test_env: 'test'
-};
+}; 
