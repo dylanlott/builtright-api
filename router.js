@@ -58,11 +58,11 @@ module.exports = function(app) {
 
     // Test protected route
     apiRoutes.get('/protected', requireAuth, (req, res) => {
-        res.send({ content: 'The protected test route is functional!' });
+      res.send({ content: 'The protected test route is functional!' });
     });
 
     apiRoutes.get('/admins', requireAuth, AuthenticationController.roleAuthorization(ROLE_ADMIN), (req, res) => {
-        res.send({ content: 'Admin dashboard is working.' });
+      res.send({ content: 'Admin dashboard is working.' });
     });
 
     //= ========================
@@ -116,7 +116,7 @@ module.exports = function(app) {
     communicationRoutes.post('/contact', CommunicationController.sendContactForm);
 
     app.use('/health', function(req, res, next) {
-        res.send('OK');
+      res.send('OK');
     });
     // Set url for API group routes
     app.use('/api', apiRoutes);
