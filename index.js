@@ -65,8 +65,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Import routes to be served
 router(app);
 
-// necessary for testing
 module.exports = server;

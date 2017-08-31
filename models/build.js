@@ -6,10 +6,16 @@ const BuildSchema = new Schema({
   _user: { type: Schema.Types.ObjectId, ref: 'User' },
   _parts: [{ type: Schema.Types.ObjectId, ref: 'Part' }],
   info: { type: String },
-  created: { type: Date, default: Date.now },
-  updated: { type: Date, default: Date.now },
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' },
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   hidden: { type: Boolean },
   deleted: { type: Boolean },
-  votes: { type: Number }
+  votes: [ type: String ]
+},{
+  timestamps: true
 });
+
+BuildSchema.methods.votecount = function () {
+  return this.votes.length;
+}
+
+module.exports = mongoose.model('Build', BuildSchema);
