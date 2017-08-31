@@ -1,31 +1,29 @@
-const AuthenticationController = require('./controllers/authentication');
-const UserController = require('./controllers/user');
-const ChatController = require('./controllers/chat');
-const CommunicationController = require('./controllers/communication');
-const StripeController = require('./controllers/stripe');
+const AuthenticationController = require('../controllers/authentication');
+const UserController = require('../controllers/user');
+const ChatController = require('../controllers/chat');
+const CommunicationController = require('../controllers/communication');
+const StripeController = require('../controllers/stripe');
 const express = require('express');
 const passport = require('passport');
-const constants = require('./constants');
-
+const constants = require('../constants');
+const buildRoutes = require('./build.js');
+const commentRoutes = require('./comment.js');
 const ROLE_MEMBER = constants.ROLE_MEMBER;
 const ROLE_CLIENT = constants.ROLE_CLIENT;
 const ROLE_OWNER = constants.ROLE_OWNER;
 const ROLE_ADMIN = constants.ROLE_ADMIN;
 
-//require in passport config
-const passportService = require('./config/passport');
-
+const passportService = require('../config/passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireLogin = passport.authenticate('local', { session: false });
 
 module.exports = function(app) {
-    // Initializing route groups
-    const apiRoutes = express.Router(),
-        authRoutes = express.Router(),
-        userRoutes = express.Router(),
-        chatRoutes = express.Router(),
-        payRoutes = express.Router(),
-        communicationRoutes = express.Router();
+    const apiRoutes = express.Router()
+    const authRoutes = express.Router()
+    const userRoutes = express.Router()
+    const chatRoutes = express.Router()
+    const payRoutes = express.Router()
+    const communicationRoutes = express.Router();
 
     //= ========================
     // Auth Routes
@@ -33,6 +31,8 @@ module.exports = function(app) {
 
     // Set auth routes as subgroup/middleware to apiRoutes
     apiRoutes.use('/auth', authRoutes);
+    apiRoutes.use('/builds', buildRoutes);
+    apiRoutes.use('/comments', commentRoutes);
 
     // Registration route
     authRoutes.post('/register', AuthenticationController.register);

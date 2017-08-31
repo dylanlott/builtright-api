@@ -1,7 +1,7 @@
-const ROLE_MEMBER = 'Member';
-const ROLE_CLIENT = 'Client';
-const ROLE_OWNER = 'Owner';
-const ROLE_ADMIN = 'Admin';
+const ROLE_MEMBER = 'member';
+const ROLE_CLIENT = 'client';
+const ROLE_OWNER = 'owner';
+const ROLE_ADMIN = 'admin';
 
 module.exports = {
   ROLE_MEMBER,
