@@ -1,4 +1,5 @@
 // Importing Node modules and initializing Express
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');

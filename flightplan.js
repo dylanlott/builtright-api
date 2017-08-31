@@ -26,19 +26,14 @@ plan.remote('setup', function(remote) {
 });
 
 plan.local('deploy', function(local) {
-    local.hostname();
-    local.failsafe();
-    local.exec('git add . && git commit -am "flightplan push"');
-    local.log('Committed to GitHub');
-    local.exec('git push origin master');
-    local.log('Pushed to GitHub');
-    local.unsafe();
+  const payload = local.exec('git ls-files', {silent: true});
+  local.log('transferring files');
+  local.transfer(payload, '/var/www/builtrightapp.com/server', {user: 'root'});
 });
 
 plan.remote('deploy', function(remote) {
     remote.hostname();
     remote.with('cd ' + remote.runtime.webRoot, function() {
-        remote.exec('sudo git pull origin master');
         remote.exec('sudo npm install');
         remote.failsafe();
         remote.exec('sudo pm2 restart index.js');

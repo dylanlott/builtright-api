@@ -1,0 +1,23 @@
+version: '2'
+services:
+  server:
+    build:
+      context: . 
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./:/app"
+    links:
+      - mongo:mongo
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+
+  mongo:
+    image: bitnami/mongodb
+    ports:
+      - "27017:27017"
+    env_file:
+      - .env
